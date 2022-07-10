@@ -1,0 +1,312 @@
+/* 
+Product Card UI Design
+👨By: Coding Design
+
+You can do whatever you want with the code. However if you love my content, you can subscribed my YouTube Channel
+🌎link: www.youtube.com/codingdesign2
+ */
+
+:root {
+    --primary: #18253c;
+    /* --primary: #fff; */
+    --secondary: #00dd53;
+    --bg: #0e1523;
+    /* --bg: #f5f5f5; */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    overflow-x: hidden;
+}
+
+.slider {
+    background-color: var(--bg);
+    padding: 1rem;
+
+    margin: 7rem auto;
+    display: flex;
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    grid-gap: 2rem; */
+
+    font: normal 1rem sans-serif;
+}
+
+.card {
+    position: relative;
+    left:0;
+
+    min-width: 17rem;
+    height: 23rem;
+    background-color:var(--primary);
+    color: #fff;
+    border-radius: 1rem;
+    border: .1rem solid transparent;
+
+    box-shadow: 0 .2rem .6rem #0003;
+    transition: .5s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        min-width: 21rem;
+    }
+}
+
+.card:not(:first-child) {
+    margin-left: 2rem;
+}
+
+.card:first-child {
+    margin-left: .4rem;
+}
+
+.card:hover {
+    border: .1rem solid var(--secondary);
+    transform: scale(1.05);
+}
+
+
+.card-content {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    
+    overflow: hidden;
+    border-radius: inherit;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card-content::before, .card-content::after {
+    position: absolute;
+    content: "";
+    background-color: var(--secondary);
+    border-radius: 50%;
+    transition: .5s ease-in-out;
+}
+
+.card-content::before {
+    top: -6%;
+    right: -6%;
+    width: 9rem;
+    height: 9rem;
+}
+
+.card-content::after {
+    bottom: -6%;
+    left: -6%;
+    width: 5rem;
+    height: 5rem;
+}
+
+.card-content:hover::before {
+    transform: scale(1.8);
+}
+
+.card-content:hover::after {
+    transform: scale(0);
+}
+
+.card-img, 
+.card-title {
+    transform: translateY(4rem);
+    transition: .5s ease-in-out;
+}
+
+.card-img {
+    width: auto;
+    height: 9.5rem;
+}
+
+.card-title {
+    font-size: 1rem;
+    text-transform: capitalize;
+    transition-delay: .1s;
+}
+
+.card-body, 
+.card-footer {
+    transform: translateY(8rem);
+    transition: .5s ease-in-out;
+}
+
+.card-body {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    transition-delay: .2s;
+}
+
+.card:hover .card-img,
+.card:hover .card-title,
+.card:hover .card-body,
+.card:hover .card-footer {
+    transform: translateY(0);
+}
+
+.card-footer {
+    transition-delay: .3s;
+}
+
+.star {
+    font-size: 1.4rem;
+    color: gold;
+}
+
+.card-price {
+    font: bolder 1.5rem sans-serif;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    background-color: unset;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: var(--secondary);
+}
+
+.btn-border {
+    border: .1rem solid var(--secondary);
+}
+
+.arrow {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    
+    width: 3rem;
+    height: 3rem;
+    background-color: #fff;
+    color: #000;
+
+    border-radius: 50%;
+    outline: .5rem solid transparent;
+    font: 800 1.5rem sans-serif;
+    text-align: center;
+    line-height: 3rem;
+    user-select: none;
+
+    cursor: pointer; 
+    transition: .5s ease-in-out;
+    z-index: 200;
+}
+
+.arrow:active {
+    background-color: #ddd;
+    /* background-color: #666; */
+}
+
+.left {
+    left: 1rem;
+}
+
+.right {
+    right: 1rem;
+}
+
+.shopping-cart {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    border-radius: 50%;
+    outline: .5rem solid transparent;
+    
+    text-align:center;
+    line-height: 4rem;
+
+    cursor: pointer;
+    box-shadow: 0 .2rem .6rem #0006;
+    transition: .5s ease-in-out;
+}
+
+.shopping-cart.active {
+    width: 8rem;
+    border-radius: .8rem;
+}
+
+.shopping-cart.active > span{
+    margin-left: -4rem;
+}
+
+.arrow:hover, .shopping-cart:hover {
+    outline: .5rem solid #fff5;
+}
+
+.shopping-cart::before {
+    position: absolute;
+    content: attr(data-product-count);
+
+    top: -.5rem;
+    right: -.5rem;
+
+    width: 2rem;
+    height: 2rem;
+
+    color: #fff;
+    background-color: #f00;
+    font-family: sans-serif;
+    
+    border-radius: 50%;
+    
+    text-align:center;
+    line-height: 2rem;
+}
+
+.cart-icon {
+    font-size: 2rem;
+    transition: .5s ease-in-out;
+}
+
+/* For Js Code */
+
+.flying-img {
+    position: absolute;
+    animation: fly_to_cart 1s ease-in-out;
+}
+
+@keyframes fly_to_cart {
+    0% {
+        left: 0;
+        top: 0;
+    }
+    45%, 50% {
+        left: var(--left);
+        top: 60px;
+    }
+    80%, 90% {
+        left: var(--left);
+        top: var(--top);
+        transform: scale(.2);
+    }
+    100% {
+        left: calc(var(--left) + 40px);
+        top: var(--top);
+        transform: scale(.2);
+    }
+}
