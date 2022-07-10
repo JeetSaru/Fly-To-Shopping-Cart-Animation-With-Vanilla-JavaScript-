@@ -210,6 +210,8 @@ body {
 
     cursor: pointer; 
     transition: .5s ease-in-out;
+    
+    /* prevent from hiding when flying img animation take place */
     z-index: 200;
 }
 
